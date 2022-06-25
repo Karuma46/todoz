@@ -23,6 +23,12 @@
   cursor: pointer;
 }
 
+.completedTask{
+  p.taskname{
+    text-decoration: line-through;
+  }
+}
+
 .completed_tasks{
   width: 500px;
   margin-top: 50px;

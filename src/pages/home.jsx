@@ -1,6 +1,6 @@
 import Header from "components/header";
 import Sidebar from "components/sidebar";
-import AddTaskForm from "./parts/addTaskForm";
+import { Route, Routes } from "react-router-dom";
 import Tasks from "./tasks";
 
 const Home = () =>{
@@ -18,12 +18,13 @@ const Home = () =>{
             <Sidebar />
           </div>
           <div className="col-10 p-0">
-            <Tasks />
+            <Routes>
+              <Route path="/" element={<Tasks />} />
+              <Route path="/tasks/:folder" element={<Tasks />} />
+            </Routes>
           </div>
         </div>
       </div>
-
-      <AddTaskForm />
     </>
   )
 }

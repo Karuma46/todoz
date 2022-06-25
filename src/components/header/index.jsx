@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./styles.scss";
 
 const Header = () =>{
@@ -7,7 +8,9 @@ const Header = () =>{
         <div className="col-12 header">
           <div className="d-flex justify-content-between">
             <div className="logo">
-              <h1> <span>To</span>Doz</h1>
+              <Link to="/">
+                <h1> <span>To</span>Doz</h1>
+              </Link>
             </div>
 
             <div className="avatar d-flex">

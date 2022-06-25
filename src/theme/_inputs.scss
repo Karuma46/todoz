@@ -2,7 +2,8 @@
   display: flex;
   border-bottom: 1px solid rgba($color: #ffffff, $alpha: 0.38);
   margin: 10px 0px;
-  input{
+  width: 100%;
+  input, select{
     background: none;
     border: none;
     width: 100%;
@@ -15,5 +16,7 @@
     color:rgba($color: #ffffff, $alpha: 0.38);
     cursor: pointer;
   }
+  input#datetime{
+  } 
 }
 
