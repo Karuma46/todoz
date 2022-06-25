@@ -1,0 +1,27 @@
+.header{
+  height: 60px;
+  background-color: rgba(255,255,255, 0.08);
+  padding: 0px 30px;
+  box-sizing: border-box;
+}
+
+.logo{
+  h1 {
+    color: white !important;
+    font-size: 20px;
+    span{
+      font-weight: 100;
+    }
+  }
+}
+
+.avatar{
+  align-items: center;
+  .avatarImg{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    margin: 0px 10px;
+  }
+}

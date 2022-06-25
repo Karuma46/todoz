@@ -1,0 +1,19 @@
+.inputGroup{
+  display: flex;
+  border-bottom: 1px solid rgba($color: #ffffff, $alpha: 0.38);
+  margin: 10px 0px;
+  input{
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 10px 0px;
+    box-sizing: border-box;
+    outline: none;
+    flex: 1
+  }
+  span {
+    color:rgba($color: #ffffff, $alpha: 0.38);
+    cursor: pointer;
+  }
+}
+

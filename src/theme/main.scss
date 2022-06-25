@@ -1,0 +1,14 @@
+html,body{
+  padding: 0px;
+  margin: 0px;
+  overflow: auto;
+}
+
+body{
+  background-color: #121212;
+}
+
+@import "./colors";
+@import "./text";
+@import "./components";
+@import "./inputs";

@@ -1,0 +1,46 @@
+.task{
+  background-color: rgba($color: #ffffff, $alpha: 0.08);
+  width: 465px;
+  height: 56px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+  margin: 20px 0px;
+  span{
+    font-size: 16px;
+  }
+  p{
+    margin: 0px 10px; 
+  }
+  .taskname{
+    flex: 1;
+  }
+  .timestamp{
+    color: rgba($color: #ffffff, $alpha: 0.38) !important;
+    font-size: 14px;   
+  }
+  cursor: pointer;
+}
+
+.completed_tasks{
+  width: 500px;
+  margin-top: 50px;
+  border-top: 1px solid rgba($color: #ffffff, $alpha: 0.38) ;
+}
+
+.addTaskBtn{
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  .btn{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba($color: #ffffff, $alpha: 0.16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
