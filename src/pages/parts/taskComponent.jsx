@@ -1,7 +1,29 @@
 import propTypes from 'prop-types'
 import { FormatTime } from "functions/datetime"
+import { useContext } from 'react'
+import { PromptContext } from 'components/prompt/context'
+import _ from "underscore"
+import { TasksContext } from 'pages/context'
 
 const TaskComponent = ({task, onClick}) => {
+
+  let {setShowPrompt, setPromptText, setPromptAffirm} = useContext(PromptContext)
+  let {setReload} = useContext(TasksContext)
+
+  const handleDeleteTask = (uuid) => {
+    const getTasks = JSON.parse(localStorage.getItem('tasks'))
+    var newtasks = _.filter(getTasks, (t) => {return t.uuid !== uuid})
+    localStorage.setItem('tasks', JSON.stringify(newtasks))
+    setShowPrompt(false)
+    setReload(Math.random())
+  }
+
+  const handleShowPrompt = () => {
+    setPromptText('Delete this task?')
+    setPromptAffirm({method: handleDeleteTask, uuid: task.uuid})
+    setShowPrompt(true)
+  }
+
   return (
     <>
       <div className={`task ${task.completed && 'completedTask'}`}>
@@ -16,7 +38,7 @@ const TaskComponent = ({task, onClick}) => {
           <span className="material-symbols-rounded">
             edit
           </span>
-          <span className="material-symbols-rounded">
+          <span className="material-symbols-rounded" onClick={handleShowPrompt}>
             delete
           </span>
         </div>
