@@ -1,0 +1,28 @@
+.promptWrap{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .prompt{
+    width: 450px;
+    height: 60px;
+    padding: 0px 20px;
+    border-radius: 10px;
+    background-color: rgba($color: #ffffff, $alpha: 0.16);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .promptActions{
+    display: flex;
+    align-items: center;
+    span{
+      margin: 0px 7px;
+      cursor: pointer
+    }
+  }
+}
