@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import AddTaskForm from "./parts/addTaskForm"
+import TaskComponent from "./parts/taskComponent"
 import _ from "underscore"
 import "./styles.scss"
 import { FormatTime } from "functions/datetime"
@@ -36,7 +37,7 @@ const Tasks = () =>{
 
   return (
     <>
-      <div className="tasksContainer p-4">
+      <div className="tasksContainer">
 
         <h2>
           {folder && folder}
@@ -46,16 +47,10 @@ const Tasks = () =>{
         <div className="tasks">
           {
             tasks.length > 0 && tasks.map(task => (
-              <div className="task" key={`${task.uuid}`}>
-                <span className="material-symbols-rounded" onClick={() => {handleCompleteTask(task.uuid, true)}}>
-                  {task.completed && 'check_box'}
-                  {!task.completed && 'check_box_outline_blank'}
-                </span>
-                <p className="taskname">{task.name}</p>
-                <p className="timestamp">{FormatTime(task.datetime)}</p>
-              </div>
+              <TaskComponent task={task} onClick={handleCompleteTask} />
             ))
           }
+          
         </div>
 
         {
@@ -64,14 +59,7 @@ const Tasks = () =>{
           <h4>Completed</h4>
             {
               completedTasks.map(task => (
-              <div className={`task ${task.completed && 'completedTask'}`}>
-                <span className="material-symbols-rounded" onClick={() => {handleCompleteTask(task.uuid, false)}}>
-                  {task.completed && 'check_box'}
-                  {!task.completed && 'check_box_outline_blank'}
-                </span>
-                <p className="taskname">{task.name}</p>
-                <p className="timestamp">{FormatTime(task.datetime)}</p>
-              </div>
+              <TaskComponent task={task} onClick={handleCompleteTask} />
             ))
           }
           </div>
