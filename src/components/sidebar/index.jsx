@@ -32,7 +32,7 @@ const Sidebar = () =>{
       <div className="sidebar">
         <Link to="/">
           <div className="sidebarItem">
-            <span className="material-symbols-rounded">Calendar_Today</span> Today
+            <span className="material-symbols-rounded">Calendar_Today</span> Pending
           </div>
         </Link>
         <div className="foldersHeader">

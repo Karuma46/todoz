@@ -4,8 +4,8 @@ import "./styles.scss";
 const Header = () =>{
   return(
     <>
-      <div className="row">
-        <div className="col-12 header">
+      <div className="row m-0">
+        <div className="col-12 p-0 header">
           <div className="d-flex justify-content-between">
             <div className="logo">
               <Link to="/">

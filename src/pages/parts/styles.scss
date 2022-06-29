@@ -3,7 +3,6 @@
   top: 50%;
   left: 50%;
   width: 500px;
-  height: 100px;
   transform: translate(-50%, -50%);
   background-color: rgba($color: #252525, $alpha: 1);
   border-radius: 10px;
@@ -44,4 +43,11 @@
       display: block;
     }
   }
+}
+
+.form-submit{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  cursor: pointer;
 }

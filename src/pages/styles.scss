@@ -7,6 +7,8 @@
   align-items: center;
   padding: 0px 20px;
   margin: 20px 0px;
+
+  max-width: 100%;
   span{
     font-size: 16px;
   }
@@ -31,6 +33,7 @@
 
 .completed_tasks{
   width: 500px;
+  max-width: 100%;
   margin-top: 50px;
   border-top: 1px solid rgba($color: #ffffff, $alpha: 0.38) ;
 }
@@ -49,4 +52,9 @@
     align-items: center;
     cursor: pointer;
   }
+}
+
+.tasksContainer{
+  width: 90%;
+  margin: 0px auto;
 }
