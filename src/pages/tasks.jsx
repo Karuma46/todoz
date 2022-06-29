@@ -1,39 +1,20 @@
-import { useState, useEffect } from "react"
+import { useState, useContext, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import AddTaskForm from "./parts/addTaskForm"
 import TaskComponent from "./parts/taskComponent"
 import _ from "underscore"
 import "./styles.scss"
-import { FormatTime } from "functions/datetime"
+import PromptComponent from "components/prompt"
+import { TasksContext } from "./context"
 
 const Tasks = () =>{
   let {folder} = useParams()
-  const [reload, setReload] = useState('')
-  const [tasks, setTasks] = useState([])
-  const [completedTasks, setCompletedTasks] = useState([]) 
+  let {tasks, completedTasks, handleCompleteTask, setFolder} = useContext(TasksContext)
   const [showAddTaskForm, setShowAddTaskForm] = useState(false)
   
-  const handleCompleteTask = (uuid, bool) => {
-    const getTasks = JSON.parse(localStorage.getItem('tasks'))
-    var task = _.find(getTasks, (t) => { return t.uuid === uuid})
-    var newtasks = _.filter(getTasks, (t) => {return t.uuid !== uuid})
-    newtasks.push({...task, completed: bool})
-    localStorage.setItem('tasks', JSON.stringify(newtasks))
-    setReload(Math.random())
-  }
-
   useEffect(() => {
-    const getTasks = JSON.parse(localStorage.getItem('tasks'))
-    if(getTasks){
-      if(folder){
-        setTasks([..._.where(getTasks, {folder: folder, completed: false})])
-        setCompletedTasks([..._.where(getTasks, {folder: folder, completed: true})])
-      } else {
-        setTasks([..._.where(getTasks, {completed: false})])
-        setCompletedTasks([..._.where(getTasks, {completed: true})])
-      }
-    }
-  },[folder, reload])
+    setFolder(folder)
+  }, [folder])
 
   return (
     <>
@@ -77,6 +58,8 @@ const Tasks = () =>{
           </span>
         </div>
       </div>
+
+      <PromptComponent />
     </>
   )
 }

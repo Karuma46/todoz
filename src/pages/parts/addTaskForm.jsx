@@ -1,8 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import "./styles.scss"
 import { v4 as uuidv4 } from 'uuid';
+import { TasksContext } from "pages/context";
 
 const AddTaskForm = () => {
+  let {setReload} = useContext(TasksContext)
+
   const [newTask, setNewTask] = useState({
     name: '',
     datetime: '',
@@ -14,20 +17,23 @@ const AddTaskForm = () => {
 
   const handleSubmit = () => {
     var tasks = JSON.parse(localStorage.getItem('tasks'))
-    if (tasks){
-      tasks.push(newTask);
-    } else {
-      tasks = []
-      tasks.push(newTask)
+    if(newTask.name !== '' && newTask.datetime !== ''){
+      if (tasks){
+          tasks.push(newTask);
+      } else {
+        tasks = []
+        tasks.push(newTask)
+      }
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+      setReload(Math.random())
+      setNewTask({
+        name: '',
+        datetime: '',
+        completed: false,
+        folder: '',
+        uuid: uuidv4()
+      })
     }
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-    setNewTask({
-      name: '',
-      datetime: '',
-      completed: false,
-      folder: '',
-      uuid: uuidv4()
-    })
   }
 
   useEffect(() => {
@@ -42,7 +48,6 @@ const AddTaskForm = () => {
       <div id="addTaskForm">
         <div className="inputGroup">
           <input type="text" value={newTask.name} placeholder="Add Task" onChange={(e) => setNewTask({...newTask, name: e.target.value})} />
-          <span className="material-symbols-rounded" onClick={handleSubmit}>Send</span>
         </div>
         <div className="taskOptions">
           <div className="inputGroup">
@@ -62,6 +67,11 @@ const AddTaskForm = () => {
               }
             </select>
           </div>
+
+        </div>
+        <div className="form-submit" onClick={handleSubmit}>
+          Add Task &nbsp;
+          <span className="material-symbols-rounded" >Send</span>
         </div>
       </div>
     </>
